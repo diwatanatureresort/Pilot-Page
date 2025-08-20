@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paradise Nature Resort - Your Mountain Escape</title>
+    
+    <!-- Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: #05201b;
+            color: #e8e8e8;
+            position: relative;
+        }
+        
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(5, 32, 27, 0.8) 0%, rgba(13, 59, 50, 0.8) 100%);
+        }
+        
+        .nature-gradient {
+            background: linear-gradient(135deg, #0a4035 0%, #1a6b5c 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .image-overlay {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .image-overlay::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(5, 32, 27, 0.4), rgba(13, 59, 50, 0.4));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-overlay:hover::after {
+            opacity: 1;
+        }
+        
+        .logo-container {
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .section-animate {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-image {
+            height: 400px;
+            background: linear-gradient(rgba(5, 32, 27, 0.7), rgba(5, 32, 27, 0.7)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .gallery-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+        }
+        
+        .activities-image {
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+        }
+        
+        .hoverable-image {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .hoverable-image:hover {
+            transform: scale(1.02);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-image {
+                height: 300px;
+                background-attachment: scroll;
+            }
+            
+            .gallery-image {
+                height: 200px;
+            }
+            
+            .activities-image {
+                height: 250px;
+            }
+        }
+        
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .gold-accent {
+            color: #d0a74e;
+        }
+        
+        .gold-border {
+            border-color: #d0a74e;
+        }
+        
+        .card-bg {
+            background-color: #0a4035;
+        }
+        
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d0a74e, transparent);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Background Overlay -->
+    <div id="backgroundOverlay" class="background-overlay"></div>
+    
+    <!-- Logo Section -->
+    <div class="logo-container py-8 text-center">
+        <div class="inline-block p-2 card-bg rounded-full shadow-1xl">
+            <img src="logo.png" 
+                 alt="Paradise Nature Resort Logo" 
+                 class="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 gold-border">
+        </div>
+    </div>
+    
+    <!-- Main Title -->
+    <div class="text-center px-4 pb-8 section-animate">
+        <h3 class="font-display text-3xl md:text-4xl lg:text-5xl font-bold gold-accent mb-4">
+            DIWATA NATURE RESORT
+        </h3>
+    </div>
+    
+    <!-- Hero Image -->
+    <div class="mx-4 md:mx-8 lg:mx-16 mb-12 section-animate">
+        <div class="relative rounded-3xl shadow-2xl overflow-hidden mb-10">
+            <img src="balangaywedding.jpg" 
+                 class="hero-image w-full h-full object-cover hoverable-image" 
+                 data-bg-image="balangaywedding.jpg" />
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <div class="text-center text-white z-10 relative">
+                    <h2 class="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-4 gold-accent" 
+                        style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9);">
+                    </h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- New Two Pictures Section -->
+    <div class="px-4 md:px-8 lg:px-16 mb-12 section-animate">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- First Image -->
+            <div class="card-hover card-bg rounded-2xl shadow-lg overflow-hidden border border-gray-700">
+                <img src="balangay.jpg" 
+                     alt="Scenic Mountain Views" 
+                     class="gallery-image image-overlay w-full h-64 object-cover hoverable-image" 
+                     data-bg-image="balangay.jpg" />
+                
+                <div class="p-6 text-center">
+                    <h5 class="font-display text-xl font-semibold mb-2 gold-accent">BALANGAY</h5>
+                    <p class="text-gray-300">GRAND BALLROOM AND EVENT CENTER</p>
+                </div>
+            </div>
+            
+            <!-- Second Image -->
+            <div class="card-hover card-bg rounded-2xl shadow-lg overflow-hidden border border-gray-700">
+                <img src="garden.jpg" 
+                     alt="Scenic Mountain Views" 
+                     class="gallery-image image-overlay w-full h-64 object-cover hoverable-image" 
+                     data-bg-image="garden.jpg" />
+                
+                <div class="p-6 text-center">
+                    <h5 class="font-display text-xl font-semibold mb-2 gold-accent">THE GARDEN</h5>
+                    <p class="text-gray-300">OUTDOOR EVENT SPACE</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Section Divider -->
+    <div class="px-4 md:px-8 lg:px-16 mb-12">
+        <div class="section-divider"></div>
+    </div>
+    
+    <!-- Accommodations Section Title -->
+    <div class="text-center px-4 mb-12 section-animate">
+        <h4 class="font-display text-2xl md:text-3xl lg:text-4xl font-semibold gold-accent mb-2">
+            OUR RESTAURANTS
+        </h4>
+        <div class="w-24 h-1 bg-gradient-to-r from-transparent via-[#d0a74e] to-transparent mx-auto rounded-full"></div>
+    </div>
+    
+    <!-- 3 Photos Row - Accommodations -->
+    <div class="px-4 md:px-8 lg:px-16 mb-16 section-animate">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Forest Cabin -->
+            <div class="card-hover card-bg rounded-2xl shadow-lg overflow-hidden border border-gray-700">
+                <img src="hapag (2).jpg" 
+                     alt="Scenic Mountain Views" 
+                     class="gallery-image image-overlay w-full h-64 object-cover hoverable-image" 
+                     data-bg-image="hapag (2).jpg" />
+                <div class="p-6 text-center">
+                    <h5 class="font-display text-xl font-semibold mb-2 gold-accent">HAPAG</h5>
+                    <p class="text-gray-300">FILIPINO RESTAURANT</p>
+                </div>
+            </div>
+            
+            <!-- Mountain Lodge -->
+            <div class="card-hover card-bg rounded-2xl shadow-lg overflow-hidden border border-gray-700">
+                <img src="izanami.jpg" 
+                     alt="Scenic Mountain Views" 
+                     class="gallery-image image-overlay w-full h-64 object-cover hoverable-image" 
+                     data-bg-image="izanami.jpg" />
+                <div class="p-6 text-center">
+                    <h5 class="font-display text-xl font-semibold mb-2 gold-accent">IZANAMI CUISINE</h5>
+                    <p class="text-gray-300">JAPANESE RESTAURANT</p>
+                </div>
+            </div>
+            
+            <!-- Lakeside Suite -->
+            <div class="card-hover card-bg rounded-2xl shadow-lg overflow-hidden border border-gray-700">
+                <img src="aya.png" 
+                     alt="Scenic Mountain Views" 
+                     class="gallery-image image-overlay w-full h-64 object-cover hoverable-image" 
+                     data-bg-image="aya.png" />
+                <div class="p-6 text-center">
+                    <h5 class="font-display text-xl font-semibold mb-2 gold-accent">AYA BISTRO</h5>
+                    <p class="text-gray-300">SNACKBAR</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Section Divider -->
+    <div class="px-4 md:px-8 lg:px-16 mb-12">
+        <div class="section-divider"></div>
+    </div>
+    
+    <!-- Activities Section Title -->
+    <div class="text-center px-4 mb-12 section-animate">
+        <h4 class="font-display text-2xl md:text-3xl lg:text-4xl font-semibold gold-accent mb-2">
+            OUR FOODS AND BEVERAGES OUTLETS
+        </h4>
+        <div class="w-24 h-1 bg-gradient-to-r from-transparent via-[#d0a74e] to-transparent mx-auto rounded-full"></div>
+    </div>
+    
+    <!-- 2 Photos Row - Activities -->
+    <div class="px-4 md:px-8 lg:px-16 mb-16 section-animate">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Hiking Adventures -->
+            <div class="card-hover card-bg rounded-2xl shadow-lg overflow-hidden border border-gray-700">
+                <img src="TADHANA.jpg" 
+                     alt="Scenic Mountain Views" 
+                     class="gallery-image image-overlay w-full h-64 object-cover hoverable-image" 
+                     data-bg-image="TADHANA.jpg" />
+                <div class="p-8 text-center">
+                    <h5 class="font-display text-2xl font-semibold mb-3 gold-accent">TADHANA</h5>
+                    <p class="text-gray-300 text-lg">OPEN BAR</p>
+                </div>
+            </div>
+            
+            <!-- Water Sports -->
+            <div class="card-hover card-bg rounded-2xl shadow-lg overflow-hidden border border-gray-700">
+                <img src="CAFE.jpg" 
+                     alt="Scenic Mountain Views" 
+                     class="gallery-image image-overlay w-full h-64 object-cover hoverable-image" 
+                     data-bg-image="CAFE.jpg" />
+                <div class="p-8 text-center">
+                    <h5 class="font-display text-2xl font-semibold mb-3 gold-accent">DIWATA GARDEN CAFE</h5>
+                    <p class="text-gray-300 text-lg">COFFEE SHOP</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer Section -->
+    <div class="nature-gradient text-white py-12 px-4 md:px-8 lg:px-16">
+        <div class="text-center">
+            <h3 class="font-display text-3xl md:text-4xl font-bold mb-6 gold-accent">
+                Book Your Escape Today
+            </h3>
+
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8">
+                <div class="flex items-center gold-accent">
+                    <i class="fas fa-phone text-xl mr-3"></i>
+                    <span class="text-lg">09770829545</span>
+                </div>
+                <div class="flex items-center gold-accent">
+                    <i class="fa-brands fa-facebook text-xl mr-3"></i>
+                    <span class="text-lg">DiwataNatureResort</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backgroundOverlay = document.getElementById('backgroundOverlay');
+            const hoverableImages = document.querySelectorAll('.hoverable-image');
+            
+            hoverableImages.forEach(function(image) {
+                image.addEventListener('mouseenter', function() {
+                    const bgImage = this.getAttribute('data-bg-image');
+                    if (bgImage) {
+                        backgroundOverlay.style.backgroundImage = `url(${bgImage})`;
+                        backgroundOverlay.style.opacity = '0.3';
+                    }
+                });
+                
+                image.addEventListener('mouseleave', function() {
+                    backgroundOverlay.style.opacity = '0';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
